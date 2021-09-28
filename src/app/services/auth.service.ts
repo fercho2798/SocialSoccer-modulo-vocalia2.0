@@ -29,4 +29,5 @@ private URL = 'http://localhost:3000';
   getToken() {
     return localStorage.getItem('token');
   }
+
 }
