@@ -8,8 +8,8 @@ const jwt = require('jsonwebtoken');
 const user = require("../controllers/user.controller");
 
 router.post('/signup', async (req, res) => {
-    const { email, password } = req.body;
-    const newUser = new userModel({email, password});
+    const { email, password, name, lastname } = req.body;
+    const newUser = new userModel({email, password, name, lastname});
     await newUser.save();
 		const token = await jwt.sign({_id: newUser._id}, 'secretkey');
     res.status(200).json({token});
@@ -56,7 +56,6 @@ async function verifyToken(req, res, next) {
 		req.userId = payload._id;
 		next();
 	} catch(e) {
-		//console.log(e)
 		return res.status(401).send('Unauhtorized Request');
 	}
 }
