@@ -19,12 +19,4 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
- /*  loggedIn(): void{
-    this.authService.loggedIn();
-
-  } */
-
-  logout(): void {
-    this.authService.logout();
-  }
 }
