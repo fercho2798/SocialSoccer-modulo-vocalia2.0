@@ -15,11 +15,16 @@ export class TopbarComponent implements OnInit {
     lastname: '',
   };
 
-  constructor( private authService: AuthService, private router: Router) { }
+  constructor( public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  onLogout(): void {
+ /*  loggedIn(): void{
+    this.authService.loggedIn();
+
+  } */
+
+  logout(): void {
     this.authService.logout();
   }
 }
