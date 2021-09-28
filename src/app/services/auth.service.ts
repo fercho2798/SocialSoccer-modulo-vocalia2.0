@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
-/* import { isNullOrUndefined } from 'util';
- */
 @Injectable({
   providedIn: 'root'
 })
@@ -31,13 +29,6 @@ private URL = 'http://localhost:3000';
     return localStorage.getItem('token');
   }
 
-/*   getCurrentUser(): string {
-    const user = localStorage.getItem('User');
-    if (!isNullOrUndefined(user)) {
-      return user;
-    } else {
-      return null;
-    }
-  } */
+
 
 }
