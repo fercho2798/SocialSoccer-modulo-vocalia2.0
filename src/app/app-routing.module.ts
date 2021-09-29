@@ -4,12 +4,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { BlankComponent } from './layout/blank/blank.component';
 import { MainComponent } from './layout/main/main.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: BlankComponent,
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'auth',
@@ -19,7 +21,8 @@ const routes: Routes = [
   {
     path: 'pages',
     component: MainComponent,
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+    canActivate: [AuthGuard]
   },
 ];
 
