@@ -1,1 +1,88 @@
-<p>admin works!</p>
+<br><br><br>
+
+<div class="col-md-12 ">
+  <div class="card col-md-12 ">
+    <div class="row">
+
+      <!-- FORM -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body p-4">
+
+            <!-- FORM -->
+            <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+              <!-- THE Id's User -->
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
+
+              <div class="form-group">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name"
+                  placeholder="Enter your FullName" class="form-control">
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="text" name="lastname" #name="ngModel" [(ngModel)]="userService.selectedUser.lastname"
+                  placeholder="Enter your FullLastName" class="form-control">
+              </div>
+              <br>
+
+
+
+              <!--     <div class="form-group">
+                <input type="text" name = "hi" #name="ngModel" [(ngModel)]="userService.selectedUser.email"
+                  placeholder="Enter email" class="form-control">
+              </div>
+ -->
+              <div class="form-group">
+                <select [(ngModel)]="userService.selectedUser.role" name="role" class="form-control ">
+                  <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+                  <option value="USER_ROLE">USER_ROLE</option>
+                  <option value="VOCAL_ROLE">VOCAL_ROLE</option>
+                  <option value="INACTIVO">INACTIVO</option>
+
+                </select>
+                <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="userService.selectedUser.role"
+                placeholder="Enter your Role" class="form-control"> -->
+              </div>
+
+              <br><br>
+              <button class="btn btn-primary mr-2" (click)="resetForm(userForm)">Clean</button>
+              <button class="btn btn-secondary">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="col-md-8">
+        <h3 class="card-title">Usuarios registrados </h3>
+
+        <table class="table table-striped">
+          <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Rol</th>
+            <th>Email</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userService.users">
+              <td>{{ user.name }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{ user.email }}</td>
+
+              <td>
+                <a (click)="editUser(user)" class="btn btn-secondary btn-sm">
+                  <i class="bi bi-pencil-fill">✏</i>
+                </a>
+                <a (click)="deleteUser(user._id, userForm)" class="btn btn-danger btn-sm">
+                  <i class="material-icons"> 🗑️</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
