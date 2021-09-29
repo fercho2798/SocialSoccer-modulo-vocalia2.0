@@ -8,8 +8,8 @@ const jwt = require('jsonwebtoken');
 const user = require("../controllers/user.controller");
 
 router.post('/signup', async (req, res) => {
-    const { email, password } = req.body;
-    const newUser = new userModel({email, password});
+    const { email, password, name, lastname } = req.body;
+    const newUser = new userModel({email, password, name, lastname });
     await newUser.save();
 		const token = await jwt.sign({_id: newUser._id}, 'secretkey');
     res.status(200).json({token});
@@ -17,26 +17,24 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
-
     const user = await userModel.findOne({email});
     if (!user) return res.status(401).send('The email doen\' exists');
     if (user.password !== password) return res.status(401).send('Wrong Password');
 
 		const token = jwt.sign({_id: user._id}, 'secretkey');
-
-    return res.status(200).json({token});
+    return res.status(200).json({token, user});
 });
 
 
-router.get("/api/users", verifyToken , user.getUsers);
+router.get("/api/users" , user.getUsers);
 
-router.post("/api/users", verifyToken, user.createUser);
+router.post("/api/users", user.createUser);
 
-router.get("/api/users/:id", verifyToken, user.getUser);
+router.get("/api/users/:id", user.getUser);
 
-router.put("/api/users/:id", verifyToken, user.editUser);
+router.put("/api/users/:id", user.editUser);
 
-router.delete("/api/users/:id", verifyToken, user.deleteUser);
+router.delete("/api/users/:id", user.deleteUser);
 
 
 async function verifyToken(req, res, next) {
