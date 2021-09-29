@@ -3,16 +3,7 @@ footer {
   color: white;
   padding: 15px;
   position: fixed;
-  height: 60px;
+  height: 50px;
   bottom: 0;
   width: 100%;
-}
-
-.main1 {
-  display:flex;
-  margin:0 auto;
-}
-
-a img:hover {
-    color: #fff;
 }

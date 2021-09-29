@@ -34,7 +34,7 @@ export class TopbarComponent implements OnInit {
         if (resultado.value) {
             // Hicieron click en "Sí"
             console.log("*se cierra sesion*");
-            Swal.fire('Admin', `Se cerro sesion correctamente gracias por su poreferencia UwU`, 'info');
+            Swal.fire('Social Soccer', `Se cerro sesion correctamente gracias por su preferencia UwU`, 'info');
             this.authService.logout();
 
         } else {

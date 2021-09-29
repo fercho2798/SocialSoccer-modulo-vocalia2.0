@@ -1,13 +1,17 @@
 <br>
 
-<div class="col-md-12 ">
-  <div class="card col-md-12 ">
+  <div class="card offset-1 col-10 text-center p-3">
+    <br>
+    <h5 class="card-title">Usuarios Registrados</h5>
+    <br>
+
     <div class="row">
 
       <!-- FORM -->
       <div class="col-md-4">
         <div class="card">
           <div class="card-body p-4">
+
 
             <!-- FORM -->
             <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
@@ -45,16 +49,19 @@
               </div>
 
               <br><br>
-              <button class="btn btn-primary mr-2" (click)="resetForm(userForm)">Clean</button>
               <button class="btn btn-secondary">Save</button>
+              <br><br>
+              <button class="btn btn-primary mr-2" (click)="resetForm(userForm)">Clean</button>
+
+
             </form>
           </div>
         </div>
       </div>
 
       <!-- TABLE -->
-      <div class="col-md-8">
-        <h3 class="card-title">Usuarios registrados </h3>
+      <div class=" card col-md-8">
+        <h3 class="card-title"> </h3>
 
         <table class="table table-striped">
           <thead>
@@ -84,5 +91,4 @@
       </div>
     </div>
   </div>
-</div>
 <br>
