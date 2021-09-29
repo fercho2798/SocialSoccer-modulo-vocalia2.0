@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -9,15 +10,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   user = {
-    email:'',
-    password:'',
-    name:'',
-    lastname:''
+    email: '',
+    password: '',
+    name: '',
+    lastname: ''
   }
   constructor(
     private authService: AuthService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
@@ -29,12 +30,17 @@ export class RegisterComponent implements OnInit {
           console.log(res);
           localStorage.setItem('token', res.token);
           this.router.navigate(['/auth/login']);
+          Swal.fire('Registro', `Usuario Registrado exitosamente`, 'success');
+
         },
-        err => console.log(err)
-      )
+        (err) => {
+          // Si sucede un error
+          console.log(err)
+          Swal.fire('Registro', `error`, 'error');
+        });
   }
 
-  LoginNavigate(){
+  LoginNavigate() {
     this.router.navigate(['/auth/login']);
 
   }

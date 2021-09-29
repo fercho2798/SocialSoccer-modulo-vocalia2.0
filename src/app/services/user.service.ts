@@ -8,6 +8,7 @@ import { User } from '../models/user.model';
 export class UserService {
   selectedUser: User;
   users: User[];
+  user: User;
   readonly URL_API = "http://localhost:3000/api/users";
 
   constructor(private http: HttpClient) {

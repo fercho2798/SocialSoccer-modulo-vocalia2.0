@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class TopbarComponent implements OnInit {
     lastname: '',
   };
 
-  constructor( public authService: AuthService, private router: Router) { }
+  constructor( public authService: AuthService) { }
 
   ngOnInit(): void {
   }

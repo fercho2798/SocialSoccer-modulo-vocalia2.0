@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,9 +14,10 @@ export class LoginComponent implements OnInit {
 
 
   user = {
-  email:'',
-  password:''
-};
+    email: '',
+    password: '',
+    role: ''
+  };
 
   constructor(
     private authService: AuthService,
@@ -27,18 +29,25 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     this.authService.signInUser(this.user)
-      .subscribe(
-        res => {
-          console.log(res);
-          localStorage.setItem('token', res.token);
+      .subscribe(res => {
+        Swal.fire('Login', `Usuario Logueado exitosamente`, 'success');
 
-          this.router.navigate(['/pages/home']);
-        },
-        err => console.log(err)
-      )
+        console.log(res);
+        if (this.authService.signInUser(this.user.role === 'ADMIN_ROLE')) {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/pages/admin']);
+        } if (this.authService.signInUser(this.user.role === 'VOCAL_ROLE')) {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/pages/vocal']);
+        }
+      }, (err) => {
+        // Si sucede un error
+        console.log(err)
+        Swal.fire('Login', `El email o la contraseña esta incorrecta`, 'error');
+      });
   }
 
-  registerNavigate(){
+  registerNavigate() {
     this.router.navigate(['/auth/register']);
 
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +21,8 @@ export class AdminComponent implements OnInit {
 
   addUser(form?: NgForm) {
     if (form.value._id) {
+      Swal.fire('Admin', `Se actualizo exitosamente`, 'success');
+
       this.userService.putUser(form.value).subscribe((res) => {
         this.resetForm(form);
         this.getUsers();
@@ -38,12 +41,31 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(_id: string, form: NgForm) {
-    if (confirm("Are you sure you want to delete it?")) {
-      this.userService.deleteUser(_id).subscribe((res) => {
-        this.getUsers();
-        this.resetForm(form);
-      });
-    }
+
+
+    Swal
+    .fire({
+        title: "Admin",
+        text: "¿Estas seguro de eliminar el usuario?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+    })
+    .then(resultado => {
+        if (resultado.value) {
+            // Hicieron click en "Sí"
+            console.log("*se elimina el usuario*");
+            Swal.fire('Admin', `Se borro exitosamente`, 'success');
+            this.userService.deleteUser(_id).subscribe((res) => {
+              this.getUsers();
+              this.resetForm(form);
+            });
+        } else {
+            // Dijeron que no
+            console.log("*NO se elimina el usuario");
+        }
+    });
   }
 
   resetForm(form?: NgForm) {
