@@ -33,12 +33,13 @@ export class LoginComponent implements OnInit {
         Swal.fire('Login', `Usuario Logueado exitosamente`, 'success');
 
         console.log(res);
-        if (this.authService.signInUser(this.user.role === 'ADMIN_ROLE')) {
+        if (this.authService.signInUser(this.user.role === "ADMIN_ROLE")) {
           localStorage.setItem('token', res.token);
           this.router.navigate(['/pages/admin']);
         } if (this.authService.signInUser(this.user.role === 'VOCAL_ROLE')) {
           localStorage.setItem('token', res.token);
           this.router.navigate(['/pages/vocal']);
+          console.log(this.user.role)
         }
       }, (err) => {
         // Si sucede un error

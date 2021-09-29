@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
     }
       this.router.navigate(['/auth/login']);
        Swal.fire({
-        icon: 'error',
+        icon: 'info',
         title: 'Oops...',
         text: 'Primero logueese o registrese',
 
