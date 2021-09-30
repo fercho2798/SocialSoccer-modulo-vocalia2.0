@@ -1,1 +1,116 @@
-<p>vocal works!</p>
+<br><br>
+
+<div class="card offset-1 col-10 text-center p-3">
+    <br>
+    <h5 class="card-title">Formulario Vocalia</h5>
+    <br>
+
+    <div class="row">
+
+      <!-- FORM -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body p-4">
+
+
+            <!-- FORM -->
+            <form #vocaliaForm="ngForm" (ngSubmit)="addVocalia(vocaliaForm)">
+              <!-- THE Id's Vocalia -->
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="vocalService.selectedVocalia._id">
+              <label >Nombre del Jugador</label>
+              <div class="form-group">
+                <input type="text" name="nameOfPlayer" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.nameOfPlayer"
+                  placeholder="Enter your FullName" class="form-control">
+              </div>
+              <br>
+              <label >Numero de camiseta</label>
+
+              <div class="form-group">
+                <input type="number" name="numberOfTShirt" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.numberOfTShirt"
+                  placeholder="Enter your numberoftshirt" class="form-control">
+              </div>
+              <br>
+              <label >Cambios</label>
+
+              <div class="form-group">
+                <select [(ngModel)]="vocalService.selectedVocalia.changes" name="changes" class="form-control ">
+                  <option value="0">Ninguno</option>
+                  <option value="1">Un Cambio</option>
+                  <option value="2">dos Cambios</option>
+                  <option value="3">tres Cambios</option>
+
+                </select>
+                <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="vocaliaService.selectedVocalia.role"
+                placeholder="Enter your Role" class="form-control"> -->
+              </div>
+
+           <!--    <div class="form-group">
+                <input type="number" name="changes" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.changes"
+                  placeholder="Enter your changes" class="form-control">
+              </div> -->
+              <br>
+
+
+
+              <!--     <div class="form-group">
+                <input type="text" name = "hi" #name="ngModel" [(ngModel)]="vocaliaService.selectedVocalia.email"
+                  placeholder="Enter email" class="form-control">
+              </div>
+ -->              <label >Tarjetas</label>
+
+              <div class="form-group">
+                <select [(ngModel)]="vocalService.selectedVocalia.card" name="card" class="form-control ">
+                  <option value="NINGUNA">NINGUNA</option>
+                  <option value="TARJETA_ROJA">Tarjeta Roja</option>
+                  <option value="TARJETA_AMARILLA">Tarjeta amarilla</option>
+
+                </select>
+                <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="vocaliaService.selectedVocalia.role"
+                placeholder="Enter your Role" class="form-control"> -->
+              </div>
+
+              <br><br>
+              <button class="btn btn-secondary">Save</button>
+              <br><br>
+
+
+            </form>
+            <button class="btn btn-primary mr-2" (click)="resetForm(vocaliaForm)">Clean</button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class=" card col-md-8">
+        <h3 class="card-title"> </h3>
+
+        <table class="table table-striped">
+          <thead>
+            <th>Jugador</th>
+            <th>Numero</th>
+            <th>Tarjetas</th>
+            <th>Cambios</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vocalia of vocalService.vocalias">
+              <td>{{ vocalia.nameOfPlayer }}</td>
+              <td>{{ vocalia.numberOfTShirt }}</td>
+              <td>{{ vocalia.card }}</td>
+              <td>{{ vocalia.changes }}</td>
+
+              <td>
+                <a (click)="editVocal(vocalia)" class="btn btn-secondary btn-sm">
+                  <i class="bi bi-pencil-fill">✏</i>
+                </a>
+                <a (click)="deleteVocalia(vocalia._id, vocaliaForm)" class="btn btn-danger btn-sm">
+                  <i class="material-icons"> 🗑️</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<br>
