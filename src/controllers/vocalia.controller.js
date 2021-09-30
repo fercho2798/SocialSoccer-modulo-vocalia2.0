@@ -12,6 +12,8 @@ vocaliaCtrl.createVocalia = async (req, res, next) => {
         nameOfPlayer: req.body.nameOfPlayer,
         numberOfTShirt: req.body.numberOfTShirt,
         changes: req.body.changes,
+        card: req.body.card,
+
 
     });
     await vocalia.save();

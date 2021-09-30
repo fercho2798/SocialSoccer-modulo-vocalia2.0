@@ -11,12 +11,7 @@ const vocaliaSchema = new Schema(
     nameOfPlayer: {type: String},
     numberOfTShirt: {type: Number},
     changes: {type: Number},
-    card: {
-        type: String,
-        required: true,
-        default: 'NINGUNA',
-        enum: cards
-    },
+    card: {type: String,required: true,},
   },
 {
     versionKey: false,
