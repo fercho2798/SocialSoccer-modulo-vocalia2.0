@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'pages',
-    component: BlankComponent,
+    component: MainComponent,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
     canActivate: [AuthGuard]
   },
