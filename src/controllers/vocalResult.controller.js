@@ -15,6 +15,9 @@ vocalResultCtrl.createVocalResult = async (req, res, next) => {
         CardsYellow: req.body.CardsYellow,
         goals1: req.body.goals1,
         goals2: req.body.goals2,
+        changes1: req.body.changes1,
+        changes2: req.body.changes2,
+        observation: req.body.observation,
 
 
     });
