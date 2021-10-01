@@ -9,12 +9,14 @@ vocaliaCtrl.getVocalias = async (req, res, next) => {
 
 vocaliaCtrl.createVocalia = async (req, res, next) => {
     const vocalia = new Vocalia({
+        team: req.body.team,
         nameOfPlayer: req.body.nameOfPlayer,
         numberOfTShirt: req.body.numberOfTShirt,
         changes: req.body.changes,
         card: req.body.card,
         goals: req.body.goals,
         calendar: req.body.calendar,
+        numberOfChanges: req.body.numberOfChanges,
 
 
     });
