@@ -14,7 +14,8 @@ const vocalResultSchema = new Schema(
     goals2: {type: Number , required: true,},
     changes1: {type: Number , required: true,},
     changes2: {type: Number , required: true,},
-    observation: {type: String}
+    observation1: {type: String},
+    observation2: {type: String}
   },
 {
     versionKey: false,
