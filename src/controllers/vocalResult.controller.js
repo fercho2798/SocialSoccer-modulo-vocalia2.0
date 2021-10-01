@@ -11,8 +11,10 @@ vocalResultCtrl.createVocalResult = async (req, res, next) => {
     const vocalResult = new VocalResult({
         team1: req.body.team1,
         team2: req.body.team2,
-        CardsRed: req.body.CardsRed,
-        CardsYellow: req.body.CardsYellow,
+        CardsRed1: req.body.CardsRed,
+        CardsRed2: req.body.CardsRed,
+        CardsYellow1: req.body.CardsYellow,
+        CardsYellow2: req.body.CardsYellow,
         goals1: req.body.goals1,
         goals2: req.body.goals2,
         changes1: req.body.changes1,
