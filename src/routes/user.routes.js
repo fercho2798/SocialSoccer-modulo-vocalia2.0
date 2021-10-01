@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 
 const user = require("../controllers/user.controller");
 const vocalia = require("../controllers/vocalia.controller");
+const vocalResult = require("../controllers/vocalResult.controller");
+
 
 router.post('/signup', async (req, res) => {
     const { email, password, name, lastname } = req.body;
@@ -47,6 +49,17 @@ router.get("/api/vocalias/:id", vocalia.getVocalia);
 router.put("/api/vocalias/:id", vocalia.editVocalia);
 
 router.delete("/api/vocalias/:id", vocalia.deleteVocalia);
+
+//VOCALResult
+router.get("/api/vocalResults", vocalResult.getVocalResults);
+
+router.post("/api/vocalResults", vocalResult.createVocalResult);
+
+router.get("/api/vocalResults/:id", vocalResult.getVocalResult);
+
+router.put("/api/vocalResults/:id", vocalResult.editVocalResult);
+
+router.delete("/api/vocalResults/:id", vocalResult.deleteVocalResult);
 
 
 async function verifyToken(req, res, next) {
