@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   selector: 'app-vocal-result',
   templateUrl: './vocal-result.component.html',
   styleUrls: ['./vocal-result.component.css'],
-  providers: [VocalResultService],
+  providers: [VocalResultService, VocaliaService ],
 })
 export class VocalResultComponent implements OnInit {
 
@@ -19,6 +19,7 @@ export class VocalResultComponent implements OnInit {
 
   ngOnInit(){
     this.getVocalResults();
+    this.getVocalias();
   }
 
   addVocalResult(form?: NgForm){
@@ -110,5 +111,5 @@ export class VocalResultComponent implements OnInit {
       this.vocalResultService.selectedVocalResult = new VocalResult();
     }
   }
-  
+
 }
