@@ -12,6 +12,8 @@ const vocaliaSchema = new Schema(
     numberOfTShirt: {type: Number},
     changes: {type: Number},
     card: {type: String,required: true,},
+    goals: {type: Number},
+    calendar: {type: Date},
   },
 {
     versionKey: false,

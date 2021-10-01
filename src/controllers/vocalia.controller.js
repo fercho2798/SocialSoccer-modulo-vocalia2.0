@@ -13,6 +13,8 @@ vocaliaCtrl.createVocalia = async (req, res, next) => {
         numberOfTShirt: req.body.numberOfTShirt,
         changes: req.body.changes,
         card: req.body.card,
+        goals: req.body.goals,
+        calendar: req.body.calendar,
 
 
     });
