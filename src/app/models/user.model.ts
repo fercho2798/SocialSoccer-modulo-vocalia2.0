@@ -10,7 +10,7 @@
 
 export class User {
 
-  constructor(_id = "", role = "", name="", lastname = "", password = "", email = "") {
+  constructor(_id = "", role = "USER_ROLE", name="", lastname = "", password = "", email = "") {
     this._id = _id;
     this.role = role;
     this.name = name;

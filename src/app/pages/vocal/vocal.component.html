@@ -17,6 +17,12 @@
             <form #vocaliaForm="ngForm" (ngSubmit)="addVocalia(vocaliaForm)">
               <!-- THE Id's Vocalia -->
               <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="vocalService.selectedVocalia._id">
+              <label >Escojer equipo</label>
+              <div class="form-group">
+                <input type="text" name="team" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.team"
+                  placeholder="Enter your Team" class="form-control">
+              </div>
+              <br>
               <label >Nombre del Jugador</label>
               <div class="form-group">
                 <input type="text" name="nameOfPlayer" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.nameOfPlayer"
@@ -27,21 +33,27 @@
 
               <div class="form-group">
                 <input type="number" name="numberOfTShirt" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.numberOfTShirt"
-                  placeholder="Enter your numberoftshirt" class="form-control">
+                  placeholder="Enter your numberoftshirt" class="form-control" value="NINGUNA">
               </div>
               <br>
               <label >Cambios</label>
 
               <div class="form-group">
                 <select [(ngModel)]="vocalService.selectedVocalia.changes" name="changes" class="form-control ">
-                  <option value="0">Ninguno</option>
-                  <option value="1">Un Cambio</option>
-                  <option value="2">dos Cambios</option>
-                  <option value="3">tres Cambios</option>
-
+                  <option value="NO">No</option>
+                  <option value="SI">Si</option>
+                  
                 </select>
                 <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="vocaliaService.selectedVocalia.role"
                 placeholder="Enter your Role" class="form-control"> -->
+              </div>
+
+              <br>
+              <label >Número de camiseta para el cambio</label>
+
+              <div class="form-group">
+                <input type="number" name="numberOfChanges" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.numberOfChanges"
+                  placeholder="Enter your numberOfChanges" class="form-control">
               </div>
               
 
@@ -61,7 +73,7 @@
 
               <div class="form-group">
                 <select [(ngModel)]="vocalService.selectedVocalia.card" name="card" class="form-control ">
-                  <option value="NINGUNA">NINGUNA</option>
+                  <option value="NINGUNO">NINGUNO</option>
                   <option value="TARJETA_ROJA">Tarjeta Roja</option>
                   <option value="TARJETA_AMARILLA">Tarjeta amarilla</option>
 
@@ -97,19 +109,21 @@
 
         <table class="table table-striped">
           <thead>
+            <th>Equipo</th>
             <th>Jugador</th>
             <th>Número</th>
             <th>Tarjetas</th>
-            <th>Cambios</th>
             <th>Goles</th>
+            <th>Número para cambio</th>
           </thead>
           <tbody>
             <tr *ngFor="let vocalia of vocalService.vocalias">
+              <td>{{ vocalia.team }}</td>
               <td>{{ vocalia.nameOfPlayer }}</td>
               <td>{{ vocalia.numberOfTShirt }}</td>
               <td>{{ vocalia.card }}</td>
-              <td>{{ vocalia.changes }}</td>
               <td>{{ vocalia.goals }}</td>
+              <td>{{ vocalia.numberOfChanges }}</td>
 
               <td>
                 <a (click)="editVocal(vocalia)" class="btn btn-secondary btn-sm">
