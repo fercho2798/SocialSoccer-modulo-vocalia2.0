@@ -43,6 +43,7 @@
                 <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="vocaliaService.selectedVocalia.role"
                 placeholder="Enter your Role" class="form-control"> -->
               </div>
+              
 
            <!--    <div class="form-group">
                 <input type="number" name="changes" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.changes"
@@ -69,6 +70,15 @@
                 placeholder="Enter your Role" class="form-control"> -->
               </div>
 
+              <br>
+              <label >Goles</label>
+
+              <div class="form-group">
+                <input type="number" name="goals" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.goals"
+                  placeholder="Enter your goals" class="form-control">
+              </div>
+              <br>
+
               <br><br>
               <button class="btn btn-secondary">Save</button>
               <br><br>
@@ -88,9 +98,10 @@
         <table class="table table-striped">
           <thead>
             <th>Jugador</th>
-            <th>Numero</th>
+            <th>Número</th>
             <th>Tarjetas</th>
             <th>Cambios</th>
+            <th>Goles</th>
           </thead>
           <tbody>
             <tr *ngFor="let vocalia of vocalService.vocalias">
@@ -98,6 +109,7 @@
               <td>{{ vocalia.numberOfTShirt }}</td>
               <td>{{ vocalia.card }}</td>
               <td>{{ vocalia.changes }}</td>
+              <td>{{ vocalia.goals }}</td>
 
               <td>
                 <a (click)="editVocal(vocalia)" class="btn btn-secondary btn-sm">
