@@ -1,5 +1,5 @@
 export class VocalResult {
-  constructor(_id = "", team1 = "", team2 = "", CardsRed1 = 0, CardsRed2 = 0, CardsYellow1 = 0, CardsYellow2 = 0, goals1 = 0,  goals2 = 0, changes1 = 0, changes2 = 0, observation='' ) {
+  constructor(_id = "", team1 = "", team2 = "", CardsRed1 = 0, CardsRed2 = 0, CardsYellow1 = 0, CardsYellow2 = 0, goals1 = 0,  goals2 = 0, changes1 = 0, changes2 = 0, observation1='', observation2='' ) {
       this._id = _id;
       this.team1 = team1;
       this.team2 = team2;
@@ -11,7 +11,8 @@ export class VocalResult {
       this.goals2 = goals2;
       this.changes1 = changes1;
       this.changes2 = changes2;
-      this.observation = observation;
+      this.observation1 = observation1;
+      this.observation2 = observation2;
 
   }
 
@@ -26,6 +27,7 @@ export class VocalResult {
   goals2: number;
   changes1: number;
   changes2: number;
-  observation: string;
+  observation1: string;
+  observation2: string;
 
 }
