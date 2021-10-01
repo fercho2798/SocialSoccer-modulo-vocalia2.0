@@ -10,6 +10,9 @@ const vocalResultSchema = new Schema(
     CardsYellow: { type: Number, required: true },
     goals1: {type: Number , required: true,},
     goals2: {type: Number , required: true,},
+    changes1: {type: Number , required: true,},
+    changes2: {type: Number , required: true,},
+    observation: {type: String}
   },
 {
     versionKey: false,
