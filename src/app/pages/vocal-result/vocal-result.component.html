@@ -37,28 +37,28 @@
             <label>Numero de tarjetas amarillas</label>
             <div class="form-group">
               <input type="number" name="CardsYellow1" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.CardsYellow1" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.CardsYellow1" placeholder="Enter your CardsYellow"
                 class="form-control">
             </div>
             <br>
             <label>Goles Totales</label>
             <div class="form-group">
               <input type="number" name="goals1" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.goals1" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.goals1" placeholder="Enter your goals totals"
                 class="form-control">
             </div>
             <br>
             <label>Cambios</label>
             <div class="form-group">
               <input type="number" name="changes1" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.changes1" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.changes1" placeholder="Enter your changes"
                 class="form-control">
             </div>
             <br>
             <label>Observaciones</label>
             <div class="form-group">
               <input type="number" name="observation1" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.observation1" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.observation1" placeholder="Enter your observation"
                 class="form-control">
             </div>
 
@@ -97,28 +97,28 @@
             <label>Numero de tarjetas amarillas</label>
             <div class="form-group">
               <input type="number" name="CardsYellow2" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.CardsYellow2" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.CardsYellow2" placeholder="Enter your CardsYellow"
                 class="form-control">
             </div>
             <br>
             <label>Goles Totales</label>
             <div class="form-group">
               <input type="number" name="goals2" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.goals2" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.goals2" placeholder="Enter your goals totals"
                 class="form-control">
             </div>
             <br>
             <label>Cambios</label>
             <div class="form-group">
               <input type="number" name="changes2" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.changes2" placeholder="Enter your CardsRed"
+                [(ngModel)]="vocalResultService.selectedVocalResult.changes2" placeholder="Enter your changes"
                 class="form-control">
             </div>
             <br>
             <label>Observaciones</label>
             <div class="form-group">
-              <input type="number" name="observation2" #name="ngModel"
-                [(ngModel)]="vocalResultService.selectedVocalResult.observation2" placeholder="Enter your CardsRed"
+              <input type="text" name="observation2" #name="ngModel"
+                [(ngModel)]="vocalResultService.selectedVocalResult.observation2" placeholder="Enter your observation"
                 class="form-control">
             </div>
 
@@ -167,6 +167,15 @@
         <td>{{ vocalResult.changes2 }}</td>
         <td>{{ vocalResult.observation2 }}</td>
 
+        <td>
+          <a (click)="editVocalResult(vocalResult)" class="btn btn-secondary btn-sm">
+            <i class="bi bi-pencil-fill">✏</i>
+          </a>
+          <a (click)="deleteVocalResult(vocalResult._id, vocalResultForm)" class="btn btn-danger btn-sm">
+            <i class="material-icons"> 🗑️</i>
+          </a>
+        </td>
+      </tr>
     </tbody>
   </table>
 
