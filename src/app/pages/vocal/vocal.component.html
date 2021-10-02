@@ -19,8 +19,10 @@
               <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="vocalService.selectedVocalia._id">
               <label >Escojer equipo</label>
               <div class="form-group">
-                <input type="text" name="team" #name="ngModel" [(ngModel)]="vocalService.selectedVocalia.team"
-                  placeholder="Enter your Team" class="form-control">
+                <select [(ngModel)]="vocalService.selectedVocalia.team" name="team" class="form-control ">
+                  <option *ngFor="let team of teamService.teams" value="{{team.nameOfTeam}}">{{team.nameOfTeam}}</option>
+
+                </select>
               </div>
               <br>
               <label >Nombre del Jugador</label>

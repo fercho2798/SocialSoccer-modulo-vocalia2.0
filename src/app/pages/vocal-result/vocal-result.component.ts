@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VocalResult } from 'src/app/models/vocaliaResult.model';
+import { TeamService } from 'src/app/services/team.service';
 import { VocalResultService } from 'src/app/services/vocal-result.service';
 import { VocaliaService } from 'src/app/services/vocalia.service';
 import Swal from 'sweetalert2';
@@ -15,11 +16,12 @@ import Swal from 'sweetalert2';
 })
 export class VocalResultComponent implements OnInit {
 
-  constructor(public vocalResultService: VocalResultService, public vocalService: VocaliaService, private router: Router) { }
+  constructor(public vocalResultService: VocalResultService, public teamService: TeamService, public vocalService: VocaliaService, private router: Router) { }
 
   ngOnInit(){
     this.getVocalResults();
     this.getVocalias();
+    this.getTeams();
   }
 
   addVocalResult(form?: NgForm){
@@ -44,6 +46,18 @@ export class VocalResultComponent implements OnInit {
     this.vocalResultService.getVocalResults().subscribe(
       (res) => {
       this.vocalResultService.vocalResults = res;
+    },  err =>{    if (err instanceof HttpErrorResponse) {
+      if (err.status === 401) {
+        this.router.navigate(['/signin']);
+      }
+    }}
+    );
+  }
+
+  getTeams() {
+    this.teamService.getTeams().subscribe(
+      (res) => {
+      this.teamService.teams = res;
     },  err =>{    if (err instanceof HttpErrorResponse) {
       if (err.status === 401) {
         this.router.navigate(['/signin']);

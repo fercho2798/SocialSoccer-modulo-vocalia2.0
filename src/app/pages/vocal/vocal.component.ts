@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Vocalia } from 'src/app/models/vocalia.model';
+import { TeamService } from 'src/app/services/team.service';
 import { VocaliaService } from 'src/app/services/vocalia.service';
 import Swal from 'sweetalert2';
 
@@ -10,14 +11,15 @@ import Swal from 'sweetalert2';
   selector: 'app-vocal',
   templateUrl: './vocal.component.html',
   styleUrls: ['./vocal.component.css'],
-  providers: [VocaliaService],
+  providers: [VocaliaService, TeamService],
 })
 export class VocalComponent implements OnInit {
 
-  constructor(public vocalService: VocaliaService, private router: Router) { }
+  constructor(public vocalService: VocaliaService, public teamService: TeamService, private router: Router) { }
 
   ngOnInit() {
     this.getVocalias();
+    this.getTeams();
   }
 
   addVocalia(form?: NgForm) {
@@ -36,6 +38,18 @@ export class VocalComponent implements OnInit {
         this.resetForm(form);
       });
     }
+  }
+
+  getTeams() {
+    this.teamService.getTeams().subscribe(
+      (res) => {
+      this.teamService.teams = res;
+    },  err =>{    if (err instanceof HttpErrorResponse) {
+      if (err.status === 401) {
+        this.router.navigate(['/signin']);
+      }
+    }}
+    );
   }
 
   getVocalias() {
