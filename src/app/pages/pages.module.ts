@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VocalResultComponent } from './vocal-result/vocal-result.component';
+import { TeamComponent } from './team/team.component';
 
 
 
@@ -18,7 +19,8 @@ import { VocalResultComponent } from './vocal-result/vocal-result.component';
     VocalComponent,
     HomeComponent,
     AdminComponent,
-    VocalResultComponent
+    VocalResultComponent,
+    TeamComponent
   ],
   imports: [
     CommonModule,
