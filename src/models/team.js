@@ -4,10 +4,10 @@ const { Schema } = mongoose;
 
 const teamSchema = new Schema(
     {
-        nameofteam: { type: String, required: true },
+        nameOfTeam: { type: String, required: true },
         phone: { type: String, required: true },
-        representativename: { type: String, required: true },
-        identificationcard: { type: String, required: true },
+        representativeName: { type: String, required: true },
+        identificationCard: { type: String, required: true },
     },
     {
         versionKey: false,

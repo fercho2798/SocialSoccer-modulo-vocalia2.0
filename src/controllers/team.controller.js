@@ -9,10 +9,10 @@ teamCtrl.getTeams = async (req, res, next) => {
 
 teamCtrl.createTeam = async (req, res, next) => {
     const team = new Team({
-        nameofteam: req.body.nameofteam,
+        nameOfTeam: req.body.nameOfTeam,
         phone: req.body.phone,
-        representativename: req.body.representativename,
-        identificationcard: req.body.identificationcard,
+        representativeName: req.body.representativeName,
+        identificationCard: req.body.identificationCard,
     });
     await team.save();
     res.json({ status: "Team created"});
