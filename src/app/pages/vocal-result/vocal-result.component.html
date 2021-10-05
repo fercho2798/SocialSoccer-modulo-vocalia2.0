@@ -1,6 +1,6 @@
 <br><br>
 
-<div class="card offset-1 col-10 text-center p-3">
+<div class="card offset-1 col-10 text-center p-3" style="background-image:linear-gradient(to right, #0648ff, #ffffff)">
   <br>
   <h5 class="card-title">Resultado final </h5>
   <br>
@@ -150,34 +150,22 @@
 </div>
   <br><br><br>
   <table class="table table-striped table-bordered">
-    <thead>
-      <th>Equipo1</th>
-      <th>Tarjetasrojas</th>
-      <th>Tarjetas Amarillas</th>
-      <th> Goles</th>
-      <th>Cambios</th>
-      <th>Observaciones</th>
-      <th>Equipo2</th>
-      <th>Tarjetasrojas</th>
-      <th>Tarjetas Amarillas</th>
-      <th> Goles</th>
-      <th>Cambios</th>
-      <th>Observaciones</th>
+    <thead >
+      <th style="color: cornsilk;">Equipo1</th>
+      <th style="color: cornsilk;"> Goles</th>
+      <th style="color: cornsilk;">Observaciones</th>
+      <th style="color: rgb(0, 0, 0);">Equipo2</th>
+      <th style="color: rgb(0, 0, 0);"> Goles</th>
+      <th style="color: rgb(0, 0, 0);">Observaciones</th>
     </thead>
     <tbody>
       <tr *ngFor="let vocalResult of vocalResultService.vocalResults">
-        <td>{{ vocalResult.team1 }}</td>
-        <td>{{ vocalResult.CardsRed1 }}</td>
-        <td>{{ vocalResult.CardsYellow1 }}</td>
-        <td>{{ vocalResult.goals1 }}</td>
-        <td>{{ vocalResult.changes1 }}</td>
-        <td>{{ vocalResult.observation1 }}</td>
-        <td>{{ vocalResult.team2 }}</td>
-        <td>{{ vocalResult.CardsRed2 }}</td>
-        <td>{{ vocalResult.CardsYellow2 }}</td>
-        <td>{{ vocalResult.goals2 }}</td>
-        <td>{{ vocalResult.changes2 }}</td>
-        <td>{{ vocalResult.observation2 }}</td>
+        <td style="color: cornsilk;">{{ vocalResult.team1 }}</td>
+        <td style="color: cornsilk;">{{ vocalResult.goals1 }}</td>
+        <td style="color: cornsilk;">{{ vocalResult.observation1 }}</td>
+        <td style="color: rgb(0, 0, 0);">{{ vocalResult.team2 }}</td>
+        <td style="color: rgb(0, 0, 0);">{{ vocalResult.goals2 }}</td>
+        <td style="color: rgb(0, 0, 0);">{{ vocalResult.observation2 }}</td>
 
         <td>
           <a (click)="editVocalResult(vocalResult)" class="btn btn-secondary btn-sm">

@@ -1,99 +1,100 @@
-<br>
-
-<div class="card offset-1 col-10 text-center p-3">
   <br>
-  <h5 class="card-title">Usuarios Registrados</h5>
-  <br>
+  <br><br><br>
 
-  <div class="row">
+  <div class="card offset-1 col-10 text-center p-3" style="background-image:linear-gradient(to right, #0648ff, #ffffff)">
+    <br>
+    <h5 class="card-title">Usuarios Registrados</h5>
+    <br>
 
-    <!-- FORM -->
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body p-4">
+    <div class="row">
 
-
-          <!-- FORM -->
-          <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
-            <!-- THE Id's User -->
-            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
-            <label>Nombres</label>
-
-            <div class="form-group">
-              <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name"
-                placeholder="Enter your FullName" class="form-control">
-            </div>
-            <br>
-            <label>Apellidos</label>
-
-            <div class="form-group">
-              <input type="text" name="lastname" #name="ngModel" [(ngModel)]="userService.selectedUser.lastname"
-                placeholder="Enter your FullLastName" class="form-control">
-            </div>
-            <br>
+      <!-- FORM -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body p-4">
 
 
+            <!-- FORM -->
+            <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+              <!-- THE Id's User -->
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
+              <label>Nombres</label>
 
-            <!--     <div class="form-group">
+              <div class="form-group">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name"
+                  placeholder="Enter your FullName" class="form-control">
+              </div>
+              <br>
+              <label>Apellidos</label>
+
+              <div class="form-group">
+                <input type="text" name="lastname" #name="ngModel" [(ngModel)]="userService.selectedUser.lastname"
+                  placeholder="Enter your FullLastName" class="form-control">
+              </div>
+              <br>
+
+
+
+              <!--     <div class="form-group">
                 <input type="text" name = "hi" #name="ngModel" [(ngModel)]="userService.selectedUser.email"
                   placeholder="Enter email" class="form-control">
               </div>
  -->
-            <label>Rol</label>
+              <label>Rol</label>
 
-            <div class="form-group">
-              <select [(ngModel)]="userService.selectedUser.role" name="role" class="form-control ">
-                <option value="ADMIN_ROLE">ADMIN_ROLE</option>
-                <option value="USER_ROLE">USER_ROLE</option>
-                <option value="VOCAL_ROLE">VOCAL_ROLE</option>
-                <option value="INACTIVO">INACTIVO</option>
+              <div class="form-group">
+                <select [(ngModel)]="userService.selectedUser.role" name="role" class="form-control ">
+                  <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+                  <option value="USER_ROLE">USER_ROLE</option>
+                  <option value="VOCAL_ROLE">VOCAL_ROLE</option>
+                  <option value="INACTIVO">INACTIVO</option>
 
-              </select>
-              <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="userService.selectedUser.role"
+                </select>
+                <!--    <input type="text" name="role" #name="ngModel" [(ngModel)]="userService.selectedUser.role"
                 placeholder="Enter your Role" class="form-control"> -->
-            </div>
+              </div>
 
-            <br><br>
-            <button class="btn btn-secondary">Save</button>
-            <br><br>
-            <button class="btn btn-primary mr-2" (click)="resetForm(userForm)">Clean</button>
+              <br><br>
+              <button class="btn btn-secondary">Save</button>
+              <br><br>
+              <button class="btn btn-primary mr-2" (click)="resetForm(userForm)">Clean</button>
 
 
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- TABLE -->
-    <div class=" card col-md-8">
-      <h3 class="card-title"> </h3>
+      <!-- TABLE -->
+      <div class=" card col-md-8">
+        <h3 class="card-title"> </h3>
 
-      <table class="table table-striped">
-        <thead>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Rol</th>
-          <th>Email</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of userService.users">
-            <td>{{ user.name }}</td>
-            <td>{{ user.lastname }}</td>
-            <td>{{ user.role }}</td>
-            <td>{{ user.email }}</td>
+        <table class="table table-striped">
+          <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Rol</th>
+            <th>Email</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userService.users">
+              <td>{{ user.name }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{ user.email }}</td>
 
-            <td>
-              <a (click)="editUser(user)" class="btn btn-secondary btn-sm">
-                <i class="bi bi-pencil-fill">✏</i>
-              </a>
-              <a (click)="deleteUser(user._id, userForm)" class="btn btn-danger btn-sm">
-                <i class="material-icons"> 🗑️</i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td>
+                <a (click)="editUser(user)" class="btn btn-secondary btn-sm">
+                  <i class="bi bi-pencil-fill">✏</i>
+                </a>
+                <a (click)="deleteUser(user._id, userForm)" class="btn btn-danger btn-sm">
+                  <i class="material-icons"> 🗑️</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-<br>
+  <br>
