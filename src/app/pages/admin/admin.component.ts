@@ -28,9 +28,15 @@ export class AdminComponent implements OnInit {
       this.userService.putUser(form.value).subscribe((res) => {
         this.resetForm(form);
         this.getUsers();
+      },(err)=>{
+        console.log(err)
+        Swal.fire('', ``, 'error');
       });
+    }else{
+        Swal.fire('Administrador', `Edite un Usuario para poder actualizar`, 'error');
+      }
     }
-  }
+
 
   getUsers() {
     this.userService.getUsers().subscribe(
