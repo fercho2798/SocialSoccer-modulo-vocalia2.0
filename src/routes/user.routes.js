@@ -19,10 +19,12 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/signin', async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     const user = await userModel.findOne({email});
     if (!user) return res.status(401).send('The email doen\' exists');
     if (user.password !== password) return res.status(401).send('Wrong Password');
+	if (user.role === role) return res.status(200).send('Wrong Role');
+
 
 		const token = jwt.sign({_id: user._id}, 'secretkey');
     return res.status(200).json({token, user});

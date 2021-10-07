@@ -8,9 +8,9 @@ var cards = {
 
 const vocaliaSchema = new Schema(
   {
-    team: {type: String},
-    nameOfPlayer: {type: String},
-    numberOfTShirt: {type: Number},
+    team: {type: String,required: true,},
+    nameOfPlayer: {type: String,required: true,},
+    numberOfTShirt: {type: Number,required: true,},
     changes: {type: String},
     card: {type: String,required: true,},
     goals: {type: Number},
