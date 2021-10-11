@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          localStorage.setItem('token', res.token);
+          //localStorage.setItem('token', res.token);
           this.router.navigate(['/auth/login']);
           Swal.fire('Registro', `Usuario Registrado exitosamente`, 'success');
 
