@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.css']
+  styleUrls: ['./topbar.component.css'],
+  providers: [AuthService ],
+
 })
 export class TopbarComponent implements OnInit {
 
-  user = {
-    role:'',
-    name: '',
-    lastname: '',
-  };
+  usserLogged:User;
 
-  constructor( public authService: AuthService) { }
+
+  constructor( public authService: AuthService
+    ) { }
 
   ngOnInit(): void {
+    this.usserLogged = this.authService.getUserLoggedIn();
+
   }
 
   logout(){

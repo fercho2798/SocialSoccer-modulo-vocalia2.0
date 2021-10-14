@@ -11,9 +11,14 @@ export class AuthService {
 private URL = 'http://localhost:3000';
 
 user : User;
+private isUserLoggedIn;
+public usserLogged:User;
 token: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.isUserLoggedIn = false;
+
+  }
 
   signUpUser(user: any) {
     return this.http.post<any>(this.URL + '/signup', user)
@@ -29,6 +34,17 @@ token: string;
 
   loggedIn() {
     return !!localStorage.getItem('token');
+  }
+
+  setUserLoggedIn(user:User) {
+    this.isUserLoggedIn = true;
+    this.usserLogged = user;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+
+  }
+
+  getUserLoggedIn() {
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 
   logout() {
