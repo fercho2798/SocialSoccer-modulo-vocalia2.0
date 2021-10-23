@@ -33,7 +33,7 @@
           <li class="nav-item">
             <a class="nav-link btn nav-outline" style="cursor: pointer;" (click)="logout()">Logout</a>
           </li>
-   <li>
+   <li *ngIf="usserLogged">
     {{usserLogged.name}}
    </li>
         </ng-template>
