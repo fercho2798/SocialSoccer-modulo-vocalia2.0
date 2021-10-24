@@ -1,26 +1,46 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PagesComponent } from './pages.component';
+import { PerfilComponent } from './perfil/perfil.component';
+
+import { AdminUsuariosComponent } from './administrador/admin-usuarios/admin-usuarios.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { AdminGuard } from '../guards/admin.guard';
 import { VocalComponent } from './vocal/vocal.component';
-import { AuthGuard } from '../auth.guard';
 import { VocalResultComponent } from './vocal-result/vocal-result.component';
 import { TeamComponent } from './team/team.component';
 
 
+
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {path: 'admin', component: AdminComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'vocal', component: VocalComponent},
-  {path: 'vocalResult', component: VocalResultComponent},
-  {path: 'team', component: TeamComponent}
+  {
+    path: 'dashboard', canActivate:[AdminGuard],
+    component: PagesComponent,
+    children: [
+        { path: '', component: DashboardComponent, data:{ titulo: 'Dashboard'},canActivate:[AdminGuard] },
+        { path: 'perfil', component: PerfilComponent,  data:{ titulo: 'Perfil'} ,canActivate:[AdminGuard]},
+        { path: 'account-settings', component: AccountSettingsComponent,  data:{ titulo: 'Temas'},canActivate:[AdminGuard], },
+
+        { path: 'adminUsers', component: AdminUsuariosComponent,  data:{ titulo: 'Usuarios Registrados'},canActivate:[AdminGuard], },
+        {path: 'vocal', component: VocalComponent, data:{ titulo: 'Vocal'},canActivate:[AdminGuard],},
+        {path: 'vocalResult', component: VocalResultComponent, data:{ titulo: 'Resultado'},canActivate:[AdminGuard],},
+        {path: 'teams', component: TeamComponent, data:{ titulo: 'AGREGAR EQUIPOS'},canActivate:[AdminGuard],}
 
 
+      ]
+},
+//
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild( routes,)
+  ],
+
+  exports:[ RouterModule]
 })
 export class PagesRoutingModule { }

@@ -9,9 +9,9 @@ export class TeamService {
   selectedTeam: Team;
   teams: Team[];
   team: Team;
-  readonly URL_API = "http://localhost:3000/api/teams";
+  readonly URL_API = "http://localhost:3500/api/teams";
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.selectedTeam = new Team();
   }
 

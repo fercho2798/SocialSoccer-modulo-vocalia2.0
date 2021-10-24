@@ -1,42 +1,35 @@
-import { NgModule } from '@angular/core';
+import { SidebarService } from './services/sidebar.service';
+import { SubirArchivoService } from './services/subir-archivo.service';
+import { UsuariosService } from './services/usuarios.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-
-import { AppRoutingModule } from './app-routing.module';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TopbarComponent } from './layout/topbar/topbar.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { MainComponent } from './layout/main/main.component';
-import { BlankComponent } from './layout/blank/blank.component';
-import { TokenInterceptorService } from './services/token-interceptor.service';
-import { AuthGuard } from './auth.guard';
 
-
+import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth/auth.module';
+import { PagesModule } from './pages/pages.module';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { PipesModule } from './pipes/pipes.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopbarComponent,
-    FooterComponent,
-    MainComponent,
-    BlankComponent,
+    NopagefoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    PagesModule,
+    AuthModule,
+    PipesModule,
+    NgxPaginationModule,
   ],
   providers: [
-    AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }
-  ],
+    SubirArchivoService,
+    SidebarService,
+    UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

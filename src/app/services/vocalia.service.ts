@@ -9,9 +9,9 @@ export class VocaliaService {
   selectedVocalia: Vocalia;
   vocalias: Vocalia[];
   vocalia: Vocalia;
-  readonly URL_API = "http://localhost:3000/api/vocalias";
+  readonly URL_API = "http://localhost:3500/api/vocalias";
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.selectedVocalia = new Vocalia();
   }
 

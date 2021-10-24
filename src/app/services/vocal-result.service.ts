@@ -10,7 +10,7 @@ export class VocalResultService {
   selectedVocalResult: VocalResult;
   vocalResults: VocalResult[];
   vocalResult: VocalResult;
-  readonly URL_API = "http://localhost:3000/api/vocalResults";
+  readonly URL_API = "http://localhost:3500/api/vocalResults";
 
   constructor(private http: HttpClient) {
     this.selectedVocalResult = new VocalResult();

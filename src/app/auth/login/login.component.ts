@@ -1,9 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { AuthService } from 'src/app/services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import { Login } from 'src/app/models/login';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -12,39 +12,46 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
+  recuerdame: boolean = false;
+  email: string = '';
+  constructor( private router: Router, private _usuarioService : UsuariosService,
 
-  user = {
-    email: '',
-    password: '',
-    role: ''
-  };
-
-  constructor(
-    private authService: AuthService,
-    private router: Router
   ) { }
 
   ngOnInit() {
+
+    this.email = localStorage.getItem('email') || '';
   }
 
-  signIn() {
-    this.authService.signInUser(this.user)
-      .subscribe(res => {
-        Swal.fire('Login', `Usuario Logueado exitosamente`, 'success');
 
-        console.log(res);
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/pages/home']);
+  ingresar( form: NgForm ) {
+    if ( !form.valid ) {
 
-      }, (err) => {
-        // Si sucede un error
-        console.log(err)
-        Swal.fire('Login', `El email o la contraseña esta incorrecta`, 'error');
-      });
+      Swal.fire('warning', 'Hay errores en los campos!', 'error');
+      return;
+    }
+
+    let usuario = new Login(
+
+      form.value.email,
+      form.value.password,
+
+
+
+    );
+
+    this._usuarioService.login( usuario, form.value.recuerdame ).subscribe(res => {
+
+      this.router.navigate(['/dashboard']);
+      Swal.fire('Login', `Hola  has iniciado sesión con éxito!`, 'success');
+    },
+    err => {
+      if (err.status = (409)) {
+        Swal.fire('Error Login', 'Usuario o clave incorrectas!', 'error');
+      }
+      console.log(err)
+    },
+    );
   }
 
-  registerNavigate() {
-    this.router.navigate(['/auth/register']);
-
-  }
 }

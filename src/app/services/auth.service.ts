@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-private URL = 'http://localhost:3000';
+private URL = 'http://localhost:3500';
 
 user : User;
 private isUserLoggedIn;
