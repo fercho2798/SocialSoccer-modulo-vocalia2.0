@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuarios.models';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -27,7 +28,26 @@ export class SidebarComponent implements OnInit {
   }
 
   cerrarSesion(){
-    this._usuarioService.logOut()
-  }
+    Swal
+    .fire({
+        title: "Social soccer",
+        text: "¿Estas seguro de cerrar sesion en este momento?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        cancelButtonText: "No",
+    })
+    .then(resultado => {
+        if (resultado.value) {
+            // Hicieron click en "Sí"
+            console.log("*se cierra sesion*");
+            Swal.fire('Social Soccer', `Se cerro sesion correctamente gracias por su preferencia UwU`, 'info');
+            this._usuarioService.logOut()
+        } else {
+            // Dijeron que no
+            console.log("*NO se se cierra sesion");
+        }
+    });
+    }
 
 }

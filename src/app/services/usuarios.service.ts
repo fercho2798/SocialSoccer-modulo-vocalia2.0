@@ -68,13 +68,11 @@ export class UsuariosService {
 
 
   logOut() {
-    this.usuario = null;
-    this.token = '';
     localStorage.removeItem('id');
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    localStorage.removeItem('itempages');
     localStorage.removeItem('menu');
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
 
@@ -109,6 +107,13 @@ export class UsuariosService {
     }));
   }
 
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
 
 
 

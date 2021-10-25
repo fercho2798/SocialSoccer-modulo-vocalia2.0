@@ -4,6 +4,7 @@ import { Notification } from 'src/app/models/notification';
 import { Usuario } from 'src/app/models/usuarios.models';
 import { GeneralService } from 'src/app/services/general.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 declare function customInitFunctions();
 @Component({
@@ -27,57 +28,32 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     customInitFunctions();
     //Notificacion
-    this.getNotifications();
   }
 
   cerrarSesion() {
-    this._usuarioService.logOut()
-  }
 
-  activar() {
-    customInitFunctions();
-  }
-
-  getNotifications() {
-    this.newNotifications = 0;
-    this._notificationService.get(`notification?user_id=${this.usuario._id}`).subscribe(
-      res => {
-        this.notifications = res['data'];
-        this.notifications.forEach(element => {
-          if (!element.view) {
-            this.newNotifications += 1;
-          }
-        });
-      }, err => {
-        console.error(err);
-      }
-    )
-  }
-
-  /* Notification */
-  viewNotification( notification: Notification ) {
-    localStorage.setItem("idNotification", notification._id);
-    if ( notification.view ) {
-      if( notification.receiver.role == "PLANIFICADOR_ROLE" ){
-        this.router.navigate([`/dashboard/indicadores/${notification.uri}`])
-      } else if( notification.receiver.role == "UPDI_ROLE" ){
-        this.router.navigate([`/dashboard/indicadoresUpdiId/${notification.uri}`])
-      }
-
-    } else {
-      notification.view = true;
-      this._notificationService.updateOpcion(notification, `notification`).subscribe(
-        res => {
-          if( notification.receiver.role == "PLANIFICADOR_ROLE" ){
-            this.router.navigate([`/dashboard/indicadores/${notification.uri}`])
-          } else if( notification.receiver.role == "UPDI_ROLE" ){
-            this.router.navigate([`/dashboard/indicadoresUpdiId/${notification.uri}`])
-          }
-        }, err => {
-          console.error(err);
+    Swal
+    .fire({
+        title: "Social soccer",
+        text: "¿Estas seguro de cerrar sesion en este momento?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: "Sí",
+        cancelButtonText: "No",
+    })
+    .then(resultado => {
+        if (resultado.value) {
+            // Hicieron click en "Sí"
+            console.log("*se cierra sesion*");
+            Swal.fire('Social Soccer', `Se cerro sesion correctamente gracias por su preferencia UwU`, 'info');
+            this._usuarioService.logOut()
+        } else {
+            // Dijeron que no
+            console.log("*NO se se cierra sesion");
         }
-      )
-    }
+    });
   }
+
+
 
 }

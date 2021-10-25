@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PerfilComponent } from './perfil/perfil.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AdminUsuariosComponent } from './administrador/admin-usuarios/admin-usuarios.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -20,6 +20,8 @@ import { ChartsModule } from 'ng2-charts';
 import { TeamComponent } from './team/team.component';
 import { VocalComponent } from './vocal/vocal.component';
 import { VocalResultComponent } from './vocal-result/vocal-result.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { TokenInterceptorService } from '../services/token-interceptor.service';
 
 
 
@@ -58,6 +60,9 @@ import { VocalResultComponent } from './vocal-result/vocal-result.component';
     PipesModule,
     NgxPaginationModule,
     ChartsModule
+  ],
+  providers: [
+
   ]
 })
 

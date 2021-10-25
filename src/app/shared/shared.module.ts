@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 /* Avance de Indicadores */
 
 import { PipesModule } from '../pipes/pipes.module';
+import { BlankComponent } from './blank/blank.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { PipesModule } from '../pipes/pipes.module';
     BreadcrumsComponent,
     SidebarComponent,
     HeaderComponent,
+    BlankComponent,
     /* Avance de Indicadores */
 
   ],
@@ -26,6 +28,7 @@ import { PipesModule } from '../pipes/pipes.module';
     BreadcrumsComponent,
     SidebarComponent,
     HeaderComponent,
+    BlankComponent,
     /* Avance de Indicadores */
 
 
