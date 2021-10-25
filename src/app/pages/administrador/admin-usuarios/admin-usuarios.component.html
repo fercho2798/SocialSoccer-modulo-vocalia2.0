@@ -38,6 +38,7 @@
                     <thead>
                         <tr>
                             <th>Imagen</th>
+                            <th>Nombre</th>
                             <th>Correo</th>
                             <th>Role</th>
 
@@ -46,9 +47,12 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let usuario of usuarios">
+                        <tr *ngFor="let usuario of usuarios let user of userService.users">
                             <td class="w70">
                                 <img  [src]="usuario.img | imagen" class="img-50 img-circle pointer">
+                            </td>
+                            <td>
+                              {{ user.nombre }}
                             </td>
                             <td>
                                 {{ usuario.email }}
