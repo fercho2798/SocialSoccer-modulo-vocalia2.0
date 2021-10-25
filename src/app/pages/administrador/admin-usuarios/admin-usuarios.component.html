@@ -39,7 +39,6 @@
                         <tr>
                             <th>Imagen</th>
                             <th>Correo</th>
-                            <th>Usuario</th>
                             <th>Role</th>
 
                             <th></th>
@@ -54,7 +53,6 @@
                             <td>
                                 {{ usuario.email }}
                             </td>
-                            <td>{{ usuario.nombre }}  <input  (change)="guardarUsuario( usuario )"  type="text" [(ngModel)]="usuario.nombre" name="nombre" ></td>
                             <td>
 
                                 <select  (change)="guardarUsuario( usuario )" [(ngModel)]="usuario.role" name="role" class="form-control" [ngClass]="{'bg-danger text-white':usuario.role=='INACTIVO'}">

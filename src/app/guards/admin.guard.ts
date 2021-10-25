@@ -19,12 +19,6 @@ export class AdminGuard implements CanActivate {
 
     if ( this._usuarioService.usuario.role === 'USER_ROLE') {
       console.log( 'Bloqueado por el  GUARD');
-      Swal.fire({
-        icon: 'question',
-        title: 'Oops...',
-        text: 'Su usuario esta pendiente de activación comuniquese con el administrador',
-
-      });
       return true;
     }
     if ( this._usuarioService.usuario.role === 'VOCAL_ROLE') {
