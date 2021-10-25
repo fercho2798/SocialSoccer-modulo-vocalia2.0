@@ -1,17 +1,17 @@
-<section class="vh-100" style="background-color: #5780da;">
+<section class="vh-100" style="background-image: url('../../../assets/images/fondo-login.jfif');">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-xl-10">
+      <div>
         <div class="card" style="border-radius: 1rem;">
-          <div class="row g-0">
-            <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img 
+          <div class="row">
+            <div class="col-md-12 col-lg-6 d-none d-md-block">
+              <img
               src="../../../assets/images/login.png"
               alt="login form"
               class="img-fluid" style="border-radius: 1rem 0 0 1rem; width: 100%; height: 100%;"
               />
             </div>
-            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+            <div class="col-md-5 col-lg-5 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <form ngNativeValidate #f="ngForm" class="form-horizontal form-material" (ngSubmit)="ingresar( f )">
@@ -42,7 +42,7 @@
                         type="submit">Ingresar</button><br>
                     </div>
                     <div class="col-sm-12 text-center">
-                      <label>no tienes cuenta?</label>
+                      <label>No tienes cuenta?</label>
                       <a routerLink="/register" class="text-info m-l-5"><b>Registrarse</b></a>
                     </div>
                   </div>

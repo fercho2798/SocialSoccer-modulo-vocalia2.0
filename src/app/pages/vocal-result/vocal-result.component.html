@@ -170,12 +170,13 @@
           <td style="color: rgb(0, 0, 0);">{{ vocalResult.observation2 }}</td>
 
           <td>
-            <a (click)="editVocalResult(vocalResult)" class="btn btn-secondary btn-sm">
-              <i class="bi bi-pencil-fill">✏</i>
-            </a>
-            <a (click)="deleteVocalResult(vocalResult._id, vocalResultForm)" class="btn btn-danger btn-sm">
-              <i class="material-icons"> 🗑️</i>
-            </a>
+            <button (click)="editVocalResult(vocalResult)" class="btn btn-primary">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+
+            <button (click)="deleteVocalResult(vocalResult._id, vocalResultForm)" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i>
+            </button>
           </td>
         </tr>
       </tbody>
