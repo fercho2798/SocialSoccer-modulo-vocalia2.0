@@ -7,7 +7,7 @@ const { generarJWT } = require('../helpers/jwt');
 
 const getUsuarios = async(req, res) => {
 
-    const usuarios = await Usuario.find({}, ' email role img');
+    const usuarios = await Usuario.find({}, ' nombre email role img');
 
     res.json({
         ok: true,
@@ -177,7 +177,7 @@ const actualizarUser = async (req, res) => {
         }
 
 
-        usuario.usuario = body.usuario;
+        usuario.nombre = body.nombre;
         usuario.email = body.email;
         usuario.role = body.role;
         usuario.img = body.img;
@@ -306,7 +306,7 @@ const actualizarUsuarioAdmin = (req, res) => {
         }
 
 
-        usuario.nombre = body.usuario;
+        usuario.nombre = body.nombre;
         usuario.email = body.email;
         usuario.role = body.role;
         usuario.img = body.img;
